@@ -7,7 +7,7 @@ Team Members
 
 Greg Thorson (thorgerg)
 Tim Strawbridge (tstrawbr)
-Abdullah Alghofaili
+Abdullah Alghofaili (aalghofa)
 
 Technology Stack
 
