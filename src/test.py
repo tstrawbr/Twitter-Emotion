@@ -11,9 +11,15 @@ db = client.emotwit2016
 
 tw = open("twitter_data.txt","r+")
 
-tweets_iterator = db.twitter_collection.find()
-for tweet in tweets_iterator:
-    if 'text' in tweet:
-        tw.write(tweet['text']+ "\n")
-    else:
-        print ('This does not have a text entry')
+def test():
+    tweets_iterator = db.twitter_collection.find()
+    twit_data = {}
+    i = 0
+    for tweet in tweets_iterator:
+        if 'text' in tweet:
+            #tw.write(tweet['text']+ "\n")
+            twit_data[i] = tweet['text']
+            ++i
+        else:
+            print ('This does not have a text entry')
+    return twit_data
