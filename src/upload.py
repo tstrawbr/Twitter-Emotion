@@ -11,10 +11,10 @@ import pymongo
 import tweepy
 
 
-consumer_token = "BeqEzsvFjeJzTC9LeSTOtHGoO"
-consumer_secret = "sejQngohmybkGexNI69qNeJfRA513wK8MA5Otmdm8CBEk5K5Ha"
-key = 	"412672432-LqNFAoCjARGX5Wg2qX2RvWQT6x2cKpDH5RXHSF5K"
-secret =  "ovFhfeqgKb37neFRHxCXAcZUAnffqiry9wlZfzKnsQui0"
+consumer_token = "x"
+consumer_secret = "x"
+key = 	"x"
+secret =  "x"
 
 
 MONGO_DB_URI = "mongodb://test_user:1234@ds053300.mlab.com:53300/emotwit2016"
