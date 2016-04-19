@@ -3,10 +3,10 @@ from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
 
 # Consumer keys and access tokens, used for OAuth
-consumer_key = 'C9QOyOB0G6IOU6UvtRafXE9xt'
-consumer_secret = 'm6eEobiGEEHXhJjocnjKu3Oc6j78eJAYNis83Q1BYUXAKWO7pe'
-access_token = '865504190-sNubkyEN9lLltdSwOKlso4gBiBrwjr8K0zkXf7cI'
-access_token_secret = 'ywFM2osQLdQtXWFkBDkICvskCCYuGpW89ReOJgiWpmJ4P'
+consumer_key = 'x'
+consumer_secret = 'x'
+access_token = 'x'
+access_token_secret = 'x'
  
 # OAuth process, using the keys and tokens
 auth = OAuthHandler(consumer_key, consumer_secret)
