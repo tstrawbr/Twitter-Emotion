@@ -50,7 +50,8 @@ def root():
 
     # Test the classifier
     if request.method == 'POST':
-        testTweet = request.form["keyword"]
+        testTweet = request.form["testTweet"]
+        keyword= request.form["keyword"]
     else:
         testTweet = 'Congrats bobbie!'
 
