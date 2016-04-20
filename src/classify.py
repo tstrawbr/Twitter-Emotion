@@ -65,3 +65,4 @@ def getFeatureVector(tweet, stopWords):
             featureVector.append(w.lower())
     return featureVector
 #end
+    

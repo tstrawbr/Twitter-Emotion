@@ -67,7 +67,6 @@
             <h1>Analyzing emotions in tweets</h1>
             <p> This application is designed to analyze/classify tweets based on emotion using various classification algorithms.</p>
             <p>Click the DashBoard to get started.</p>
-            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
           </div>
         </div>
         <hr>
@@ -78,7 +77,7 @@
           <form action = "/" method="post">
           <div class="form-group">
             <label form="inputdefault">Enter a Test Tweet:</label>
-            <input class="form-control input-lg"  type="text" name = "testTweet">
+            <input class="form-control input-lg"  type="text" name = "tweet" required>
             <br />
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
@@ -89,11 +88,15 @@
           <hr>
           <div class="row">
               <div class="col-lg-12">
-            <form action = "/" method="post">
+            <form action = "/keyword" method="post">
             <div class="form-group">
               <label form="inputdefault">Enter a Keyword:</label>
-              <input class="form-control input-lg"  type="text" name = "keyword">
-              <br />
+              <input class="form-control input-lg"  type="text" name = "keyword" required>
+              <h5>Choose Amount of tweets:</h5>
+              <label class="radio-inline"><input type="radio" name="options" value=25 required>25</label>
+              <label class="radio-inline"><input type="radio" name="options" value=50 required>50</label>
+              <label class="radio-inline"><input type="radio" name="options" value=100 required>100</label>
+              <br /><br />
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
             </div>
@@ -115,6 +118,29 @@
                   <tr>
                     <td>{{ results[0] }}</td>
                     <td>{{ results[1] }}</td>
+                  </tr>
+              </table>
+            </div>
+          {% endif %}
+          {% if key_results %}
+            <h2>Results</h2>
+            <br>
+            <div id="results">
+              <table class="table table-striped" style="max-width: 300px;">
+                <thead>
+                  <tr>
+                    <th>Keyword</th>
+                    <th>Positive Tweets</th>
+                    <th>Negative Tweets</th>
+                    <th>Neutral Tweets</th>
+                    <th>Total Tweets</th>
+                  </tr>
+                </thead>
+                  <tr>
+                    <td>{{ key_results[0] }}</td>
+                    <td>{{ key_results[1] }}</td>
+                    <td></td>
+                    <td></td>
                   </tr>
               </table>
             </div>

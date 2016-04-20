@@ -4,7 +4,6 @@
 |negative|,|my whole body feels itchy and like its on fire |
 |negative|,|@nationwideclass no, it's not behaving at all. i'm mad. why am i here? because I can't see you all over there. |
 |negative|,|@Kwesidei not the whole crew |
-|negative|,|Need a hug |
 |negative|,|@LOLTrish hey  long time no see! Yes.. Rains a bit ,only a bit  LOL , I'm fine thanks , how's you ?|
 |negative|,|@Tatiana_K nope they didn't have it |
 |negative|,|@twittera que me muera ? |
@@ -5926,7 +5925,8 @@ microsoft|||
 |neutral|,|#Microsoft bringing #touchscreens to walls, clothes, and more http://t.co/bmQf5wEx #tech|
 |neutral|,|#HPVirtualSystem 4 #Microsoft is the latest solution from HP & Microsoft’s $250 million I2A initiative http://t.co/4VCIUZGL|
 |neutral|,|How to install Windows 7 – What to do before start [Part 2]: http://t.co/vvaslUmA via @Pureinfotech #win7 #tech #software #backup #microsoft|
-|neutral|,|#Microsoft Excel Tips: How To Alternate the Color Between Rows #tips http://t.co/WJWREFjJ|
+|neutral|,|#Microsoft Excel Tips: How To Alternate the Color Between Rows #tips 
+http://t.co/WJWREFjJ|
 |neutral|,|#pardus SecureBoot'a Karşı Duruyoruz!: http://t.co/Uiwn6fgQ #fsf #secureboot #linux #microsoft|
 |neutral|,|#Microsoft #Office: A #Shortcut To #Find Your #Microsoft #Office #Documents http://t.co/QojWxB50 via @ibad.info|
 |neutral|,|Are you going to #RSNA? Visit #Microsoft at booth 1411 http://t.co/wdHFz7hp #RSNA2011 #RSNA11 #radiology #Amalga #HealthVault|
