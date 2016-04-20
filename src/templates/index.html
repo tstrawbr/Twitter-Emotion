@@ -93,9 +93,9 @@
               <label form="inputdefault">Enter a Keyword:</label>
               <input class="form-control input-lg"  type="text" name = "keyword" required>
               <h5>Choose Amount of tweets:</h5>
-              <label class="radio-inline"><input type="radio" name="options" value=25 required>25</label>
-              <label class="radio-inline"><input type="radio" name="options" value=50 required>50</label>
-              <label class="radio-inline"><input type="radio" name="options" value=100 required>100</label>
+              <label class="radio-inline"><input type="radio" name="options" value=15 required>15</label>
+              <label class="radio-inline"><input type="radio" name="options" value=20 required>20</label>
+              <label class="radio-inline"><input type="radio" name="options" value=30 required>30</label>
               <br /><br />
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
@@ -138,9 +138,10 @@
                 </thead>
                   <tr>
                     <td>{{ key_results[0] }}</td>
+                    <td>{{ key_results[2][0] }}</td>
+                    <td>{{ key_results[2][1] }}</td>
+                    <td>{{ key_results[2][2] }}</td>
                     <td>{{ key_results[1] }}</td>
-                    <td></td>
-                    <td></td>
                   </tr>
               </table>
             </div>

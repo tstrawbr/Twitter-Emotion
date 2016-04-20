@@ -6,6 +6,8 @@ import pymongo
 from flask import Flask, Response, render_template, request, redirect, url_for, send_from_directory, g, session
 from test import test
 from classify import *
+from sampleCollection import *
+
 MONGO_DB_URI = "mongodb://test_user:1234@ds053300.mlab.com:53300/emotwit2016"
 client = pymongo.MongoClient(MONGO_DB_URI)
 db = client.emotwit2016
@@ -77,12 +79,15 @@ def api_test():
     else:
         keyWord = 'dog'
         numTweets = 15
-
-    processedTestTweet = processTweet(keyWord)
-    sentiment = NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet, stopWords)))
+    data = []
+    upload(keyWord,numTweets)
+    data = count_sent(NBClassifier)
+    #processedTestTweet = processTweet(keyWord)
+    #sentiment = NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet, stopWords)))
+    print("data = ", data)
     print ("keyword = %s, number of tweets = %s\n"% (keyWord, numTweets))
 
-    results = [keyWord, numTweets]
+    results = [keyWord, numTweets, data]
     return render_template('index.html', key_results=results)
 
 #server initializiation
