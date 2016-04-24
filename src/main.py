@@ -4,9 +4,12 @@ import logging
 import json
 import pymongo
 from flask import Flask, Response, render_template, request, redirect, url_for, send_from_directory, g, session
+from bokeh.resources import INLINE
 from test import test
 from classify import *
 from sampleCollection import *
+from bokehGraph import plot
+
 
 MONGO_DB_URI = "mongodb://test_user:1234@ds053300.mlab.com:53300/emotwit2016"
 client = pymongo.MongoClient(MONGO_DB_URI)
@@ -60,8 +63,17 @@ def root():
     sentiment = NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet, stopWords)))
     print ("testTweet = %s, sentiment = %s\n"% (testTweet, sentiment))
 
+    #initial graph
+    data = [8,5,2]
+    bar = []
+    bar = plot(data)
+    
     results = [testTweet, sentiment]
-    return render_template('index.html', results=results)
+    return render_template('index.html', results=results,
+        plot_script=bar[0],
+        plot_div=bar[1],
+        js_resources=bar[2],
+        css_resources=bar[3])
 
 
 
@@ -79,16 +91,24 @@ def api_test():
     else:
         keyWord = 'dog'
         numTweets = 15
+
     data = []
+    bar = []
+
     upload(keyWord,numTweets)
     data = count_sent(NBClassifier)
-    #processedTestTweet = processTweet(keyWord)
-    #sentiment = NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet, stopWords)))
+    bar = plot(data)
+
     print("data = ", data)
     print ("keyword = %s, number of tweets = %s\n"% (keyWord, numTweets))
 
     results = [keyWord, numTweets, data]
-    return render_template('index.html', key_results=results)
+    return render_template('index.html', 
+        key_results=results,
+        plot_script=bar[0],
+        plot_div=bar[1],
+        js_resources=bar[2],
+        css_resources=bar[3])
 
 #server initializiation
 if __name__ == "__main__":

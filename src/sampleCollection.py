@@ -70,7 +70,7 @@ def count_sent(NBClassifier):
         elif sentiment =='neutral':
             neut += 1
 
-    result = [pos,neg,neut]
+    result = [pos,neut,neg]
     open('tweets.txt', 'w').close()
     return result
 

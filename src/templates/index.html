@@ -10,6 +10,10 @@
   <!-- Bootstrap -->
   <link href="static/css/bootstrap.min.css" rel="stylesheet">
 
+  {{ js_resources|indent(4)|safe }}
+  {{ css_resources|indent(4)|safe }}
+  {{ plot_script|indent(4)|safe }}
+
   <!--Custom CSS-->
   <link href="static/css/main.css" rel="stylesheet">
 
@@ -126,13 +130,14 @@
             <h2>Results</h2>
             <br>
             <div id="results">
+             {{ plot_div|indent(4)|safe }}
               <table class="table table-striped" style="max-width: 300px;">
                 <thead>
                   <tr>
                     <th>Keyword</th>
                     <th>Positive Tweets</th>
-                    <th>Negative Tweets</th>
                     <th>Neutral Tweets</th>
+                    <th>Negative Tweets</th>
                     <th>Total Tweets</th>
                   </tr>
                 </thead>
