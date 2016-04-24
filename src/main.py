@@ -52,6 +52,10 @@ NBClassifier = nltk.NaiveBayesClassifier.train(training_set)
 webapp = Flask(__name__)
 @webapp.route("/", methods=['GET','POST'])
 def root():
+    return render_template('home.html')
+
+@webapp.route("/dashboard", methods=['GET','POST'])
+def dashboard():
     
     # Test the classifier
     if request.method == 'POST':
