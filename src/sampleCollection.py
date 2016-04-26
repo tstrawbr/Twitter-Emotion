@@ -4,6 +4,14 @@ from tweepy.streaming import StreamListener
 from classify import *
 from main import extract_features
 
+class tweet(object):
+    text = ""
+    sentiment = ""
+class sentSum(object):
+    pos = 0
+    neg = 0
+    neut = 0
+
 def upload(userTrack,userLimit):
     # Consumer keys and access tokens, used for OAuth
     consumer_key = 'BeqEzsvFjeJzTC9LeSTOtHGoO'
@@ -55,22 +63,26 @@ def upload(userTrack,userLimit):
     twitterStream.filter(track=[userTrack])
 
 def count_sent(NBClassifier):
-    pos = 0
-    neg = 0
-    neut = 0
     stopWords = getStopWordList('data/stopwords.txt')
     inpTweets = csv.reader(open('tweets.txt', 'rt'), quotechar='|')
+    twitArray = []
+    twitSum = sentSum()
     for row in inpTweets:
         processedTestTweet = processTweet(row[0])
         sentiment = NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet, stopWords)))
         if sentiment =='positive':
-            pos += 1
+            twitSum.pos += 1
         elif sentiment =='negative':
-            neg += 1
+            twitSum.neg += 1
         elif sentiment =='neutral':
-            neut += 1
+            twitSum.neut += 1
+        tweetObj = tweet()
+        tweetObj.text = row[0]
+        tweetObj.sentiment = sentiment
+        twitArray.append(tweetObj)
 
-    result = [pos,neut,neg]
+    #returns sum of sentiments and the actual tweets
+    result = [twitSum,twitArray]
     open('tweets.txt', 'w').close()
     return result
 

@@ -95,7 +95,7 @@
         </div>
         </div>
         <div class="row">
-          <div class="col-sm-5">
+          <div class="col-sm-6">
           {% if results %}
             <h2>Results</h2>
             <br>
@@ -131,12 +131,25 @@
                 </thead>
                   <tr>
                     <td>{{ key_results[0] }}</td>
-                    <td>{{ key_results[2][0] }}</td>
-                    <td>{{ key_results[2][1] }}</td>
-                    <td>{{ key_results[2][2] }}</td>
+                    <td>{{ twit_data[0].pos}}</td>
+                    <td>{{ twit_data[0].neut}}</td>
+                    <td>{{ twit_data[0].neg}}</td>
                     <td>{{ key_results[1] }}</td>
                   </tr>
               </table>
+              <table class="table table-striped" style="max-width: 600px">
+                <thead>
+                  <tr>
+                    <th>Tweet</th>
+                    <th>Sentiment</th>
+                  </tr>
+                </thead>
+                  {% for line in twit_data[1] %}
+                  <tr>
+                    <td>{{line.text}}</td>
+                    <td>{{line.sentiment}}</td>
+                  </tr>
+                  {% endfor %}
             </div>
           {% endif %}
         </div>

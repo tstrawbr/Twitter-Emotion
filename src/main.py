@@ -25,7 +25,7 @@ def extract_features(tweet):
 #end
 
 #Read the tweets one by one and process it
-inpTweets = csv.reader(open('data/sampleTweets.csv', 'rt'), delimiter=',', quotechar='|')
+inpTweets = csv.reader(open('data/training_dataset.csv', 'rt'), delimiter=',', quotechar='|')
 stopWords = getStopWordList('data/stopwords.txt')
 count = 0;
 featureList = []
@@ -61,15 +61,18 @@ def dashboard():
     if request.method == 'POST':
         testTweet = request.form["tweet"]
     else:
-        testTweet = 'Congrats bobbie!'
-
-    processedTestTweet = processTweet(testTweet)
-    sentiment = NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet, stopWords)))
-    print ("testTweet = %s, sentiment = %s\n"% (testTweet, sentiment))
+        testTweet = ""
+    if(testTweet):
+        processedTestTweet = processTweet(testTweet)
+        sentiment = NBClassifier.classify(extract_features(getFeatureVector(processedTestTweet, stopWords)))
+        print ("testTweet = %s, sentiment = %s\n"% (testTweet, sentiment))
+    else:
+        sentiment = ""
 
     #initial graph
-    data = [8,5,2]
+    data = []
     bar = []
+    data = count_sent(NBClassifier)
     bar = plot(data)
     
     results = [testTweet, sentiment]
@@ -103,12 +106,15 @@ def api_test():
     data = count_sent(NBClassifier)
     bar = plot(data)
 
-    print("data = ", data)
     print ("keyword = %s, number of tweets = %s\n"% (keyWord, numTweets))
-
-    results = [keyWord, numTweets, data]
+    print("sentiment: pos = %s neut = %s neg = %s\n"% (data[0].pos, data[0].neut, data[0].neg))
+    print("tweets: \n")
+    for n in range(int(numTweets) - 1):
+        print("%s\n"% data[1][n].text)
+    results = [keyWord, numTweets]
     return render_template('index.html', 
         key_results=results,
+        twit_data = data,
         plot_script=bar[0],
         plot_div=bar[1],
         js_resources=bar[2],
