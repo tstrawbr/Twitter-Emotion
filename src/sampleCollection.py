@@ -44,7 +44,7 @@ def upload(userTrack,userLimit):
         def on_status(self, status):
             self.num_tweets += 1        
             if self.num_tweets < int(userLimit):
-                with open('tweets.txt','a') as tf:
+                with open('data/tweets.txt','a') as tf:
                     line = (status.text).encode('utf-8')
                     tf.write(' | ')
                     tf.write(str(line))
@@ -64,7 +64,7 @@ def upload(userTrack,userLimit):
 
 def count_sent(NBClassifier):
     stopWords = getStopWordList('data/stopwords.txt')
-    inpTweets = csv.reader(open('tweets.txt', 'rt'), quotechar='|')
+    inpTweets = csv.reader(open('data/tweets.txt', 'rt'), quotechar='|')
     twitArray = []
     twitSum = sentSum()
     for row in inpTweets:
@@ -83,7 +83,7 @@ def count_sent(NBClassifier):
 
     #returns sum of sentiments and the actual tweets
     result = [twitSum,twitArray]
-    open('tweets.txt', 'w').close()
+    open('data/tweets.txt', 'w').close()
     return result
 
         

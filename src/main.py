@@ -9,7 +9,7 @@ from test import test
 from classify import *
 from sampleCollection import *
 from bokehGraph import plot
-
+from speechRecognition import speak
 
 MONGO_DB_URI = "mongodb://test_user:1234@ds053300.mlab.com:53300/emotwit2016"
 client = pymongo.MongoClient(MONGO_DB_URI)
@@ -69,18 +69,9 @@ def dashboard():
     else:
         sentiment = ""
 
-    #initial graph
-    data = []
-    bar = []
-    data = count_sent(NBClassifier)
-    bar = plot(data)
     
     results = [testTweet, sentiment]
-    return render_template('index.html', results=results,
-        plot_script=bar[0],
-        plot_div=bar[1],
-        js_resources=bar[2],
-        css_resources=bar[3])
+    return render_template('index.html', results=results)
 
 
 
@@ -119,6 +110,22 @@ def api_test():
         plot_div=bar[1],
         js_resources=bar[2],
         css_resources=bar[3])
+
+@webapp.route("/speech", methods=['GET','POST'])
+def speech_recogn():
+
+    speechToText = ""
+    sentiment = ""
+
+    if request.method == 'POST':
+        speechToText = speak()
+    if(speechToText):
+        processedText = processTweet(speechToText)
+        sentiment = NBClassifier.classify(extract_features(getFeatureVector(processedText, stopWords)))    
+
+    textObj = [speechToText, sentiment]
+
+    return render_template('index.html',speech_results = textObj)
 
 #server initializiation
 if __name__ == "__main__":
